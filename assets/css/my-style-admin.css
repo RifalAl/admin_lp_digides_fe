@@ -28,6 +28,15 @@ body {
 .user-tag {
   color: white;
   margin-top: .5rem;
+  margin-left: 14rem;
+}
+
+.user-tag-toggle{
+  margin-left: 6.5rem !important;
+}
+
+.page-toggle{
+  padding-left: 8rem !important;
 }
 
 #logoDigides {
@@ -113,4 +122,28 @@ body {
 
 .swal2-icon.swal2-warning{
   font-size: 1rem !important;
+}
+
+#accordionSidebar{
+  position: fixed;
+  z-index: 1031;
+}
+
+#currentPage{
+    padding-left: 15.5rem;
+    padding-right: 1.5rem;
+    padding-top: 6rem;
+}
+
+.sidebar .nav-item .nav-link{
+  padding: .75rem 1.2rem;
+}
+
+footer.sticky-footer{
+  padding: 1.5rem 0;
+  padding-left: 14rem;
+}
+
+.footer-toggle{
+  padding-left: 6.5rem !important;
 }

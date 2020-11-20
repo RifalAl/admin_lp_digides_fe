@@ -68,13 +68,13 @@
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow bg-green">
+        <nav class="navbar navbar-expand navbar-light topbar mb-4 fixed-top shadow bg-green">
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
           <div>
-            <h5 class="user-tag">ADMINISTRATOR</h5>
+            <h5 id="userTag" class="user-tag">ADMINISTRATOR</h5>
           </div>
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -139,7 +139,7 @@
         </nav>
         <!-- End of Topbar -->
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div id="currentPage" class="container-fluid">
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800 d-none">Blank Page</h1>
           <div class="card mb-4">
@@ -265,6 +265,16 @@
       }
     })
   });
+  </script>
+  <script>
+    $(document).ready(function(){
+      $("#sidebarToggle").click(function(){
+        $("#userTag").toggleClass("user-tag-toggle");
+        $("#currentPage").toggleClass("page-toggle");
+        $("footer").toggleClass("footer-toggle");
+        // alert("yihaaaa");
+      });
+    });
   </script>
 </body>
 
