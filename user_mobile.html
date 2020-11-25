@@ -154,38 +154,54 @@
               </div>
             </div>
             <div class="card-body">
-              <section id="filterTable" class="mb-4">
+              <section id="filterTable" class="mb-3">
                 <div class="row mb-3">
                   <div class="col-md-3">
                     <label>Provinsi</label>
                     <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                      <option value="">Pilih Provinsi</option>
+                      <option value="provinsi A">Provinsi A</option>
+                      <option value="provinsi B">Provinsi B</option>
+                      <option value="provinsi C">Provinsi C</option>
+                      <option value="provinsi D">Provinsi D</option>
+                      <option value="provinsi E">Provinsi E</option>
+                      <option value="provinsi F">Provinsi F</option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label>Kabupaten</label>
-                    <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                    <select id="filterKabupaten" class="select2" name="state">
+                      <option value="">Pilih Kabupaten</option>
+                      <option value="Kabupaten A">Kabupaten A</option>
+                      <option value="Kabupaten B">Kabupaten B</option>
+                      <option value="Kabupaten C">Kabupaten C</option>
+                      <option value="Kabupaten D">Kabupaten D</option>
+                      <option value="Kabupaten E">Kabupaten E</option>
+                      <option value="Kabupaten F">Kabupaten F</option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label>Kecamatan</label>
-                    <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                    <select id="filterKecamatan" class="select2" name="state">
+                      <option value="">Pilih Kecamatan</option>
+                      <option value="Kecamatan A">Kecamatan A</option>
+                      <option value="Kecamatan B">Kecamatan B</option>
+                      <option value="Kecamatan C">Kecamatan C</option>
+                      <option value="Kecamatan D">Kecamatan D</option>
+                      <option value="Kecamatan E">Kecamatan E</option>
+                      <option value="Kecamatan F">Kecamatan F</option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label>Desa</label>
-                    <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                    <select id="filterDesa" class="select2" name="state">
+                      <option value="">Pilih Desa</option>
+                      <option value="Desa A">Desa A</option>
+                      <option value="Desa B">Desa B</option>
+                      <option value="Desa C">Desa C</option>
+                      <option value="Desa D">Desa D</option>
+                      <option value="Desa E">Desa E</option>
+                      <option value="Desa F">Desa F</option>
                     </select>
                   </div>
                 </div>
@@ -261,10 +277,8 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <script>
   $(document).ready(function() {
-    $('#tableUserMobile').DataTable({
-      "bPaginate": false,
-      "bFilter": false,
-      "bInfo": false,
+    var table = $('#tableUserMobile').DataTable({
+      "pageLength" : 10,
 
       "ajax": "assets/js/source/dataDesaAktif.json",
       "columns": [{
@@ -312,6 +326,39 @@
         }
 
       ]
+    });
+
+    $("#datepicker").on("apply.daterangepicker", function(ev, picker) {
+      minDateFilter = Date.parse(picker.startDate);
+      maxDateFilter = Date.parse(picker.endDate);
+
+      $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+        var date = Date.parse(data[1]);
+
+        if (
+          (isNaN(minDateFilter) && isNaN(maxDateFilter)) ||
+          (isNaN(minDateFilter) && date <= maxDateFilter) ||
+          (minDateFilter <= date && isNaN(maxDateFilter)) ||
+          (minDateFilter <= date && date <= maxDateFilter)
+        ) {
+          return true;
+        }
+        return false;
+      });
+      table.draw();
+    });
+
+    $("#filterProvinsi").on("change", function() {
+      table.columns(3).search(this.value).draw();
+    });
+    $("#filterKabupaten").on("change", function() {
+      table.columns(4).search(this.value).draw();
+    });
+    $("#filterKecamatan").on("change", function() {
+      table.columns(5).search(this.value).draw();
+    });
+    $("#filterDesa").on("change", function() {
+      table.columns(6).search(this.value).draw();
     });
   });
   </script>

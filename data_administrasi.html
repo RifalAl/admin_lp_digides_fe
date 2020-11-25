@@ -20,13 +20,6 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <!-- favicon -->
   <link rel="icon" type="image/png" href="assets/media/misc/android-icon-144x144.png" />
-  <style type="text/css">
-  #chartdiv {
-    width: 100%;
-    height: 350px;
-    max-width: 100%;
-  }
-  </style>
 </head>
 
 <body id="page-top">
@@ -164,41 +157,61 @@
                   <div class="col-md-3">
                     <label>Provinsi</label>
                     <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                      <option value="">Pilih Provinsi</option>
+                      <option value="provinsi A">Provinsi A</option>
+                      <option value="provinsi B">Provinsi B</option>
+                      <option value="provinsi C">Provinsi C</option>
+                      <option value="provinsi D">Provinsi D</option>
+                      <option value="provinsi E">Provinsi E</option>
+                      <option value="provinsi F">Provinsi F</option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label>Kabupaten</label>
-                    <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                    <select id="filterKabupaten" class="select2" name="state">
+                      <option value="">Pilih Kabupaten</option>
+                      <option value="Kabupaten A">Kabupaten A</option>
+                      <option value="Kabupaten B">Kabupaten B</option>
+                      <option value="Kabupaten C">Kabupaten C</option>
+                      <option value="Kabupaten D">Kabupaten D</option>
+                      <option value="Kabupaten E">Kabupaten E</option>
+                      <option value="Kabupaten F">Kabupaten F</option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label>Kecamatan</label>
-                    <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                    <select id="filterKecamatan" class="select2" name="state">
+                      <option value="">Pilih Kecamatan</option>
+                      <option value="Kecamatan A">Kecamatan A</option>
+                      <option value="Kecamatan B">Kecamatan B</option>
+                      <option value="Kecamatan C">Kecamatan C</option>
+                      <option value="Kecamatan D">Kecamatan D</option>
+                      <option value="Kecamatan E">Kecamatan E</option>
+                      <option value="Kecamatan F">Kecamatan F</option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label>Desa</label>
-                    <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                    <select id="filterDesa" class="select2" name="state">
+                      <option value="">Pilih Desa</option>
+                      <option value="Desa A">Desa A</option>
+                      <option value="Desa B">Desa B</option>
+                      <option value="Desa C">Desa C</option>
+                      <option value="Desa D">Desa D</option>
+                      <option value="Desa E">Desa E</option>
+                      <option value="Desa F">Desa F</option>
                     </select>
                   </div>
                   <div class="col-12 mt-3">
                     <label>Jenis Buku</label>
-                    <select id="filterProvinsi" class="select2" name="state">
-                      <option value="AL">Alabama</option>
-                      ...
-                      <option value="WY">Wyoming</option>
+                    <select id="filterBuku" class="select2" name="state">
+                      <option value="">Pilih Buku</option>
+                      <option value="Jenis Buku A">Jenis Buku A</option>
+                      <option value="Jenis Buku B">Jenis Buku B</option>
+                      <option value="Jenis Buku C">Jenis Buku C</option>
+                      <option value="Jenis Buku D">Jenis Buku D</option>
+                      <option value="Jenis Buku E">Jenis Buku E</option>
+                      <option value="Jenis Buku F">Jenis Buku F</option>
                     </select>
                   </div>
                 </div>
@@ -279,11 +292,8 @@
   <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
   <script>
   $(document).ready(function() {
-    $('#tableDataAdministrasi').DataTable({
-      "bPaginate": false,
-      "bFilter": false,
-      "bInfo": false,
-
+    var table = $('#tableDataAdministrasi').DataTable({
+      "pageLength" : 10,
       "ajax": "assets/js/source/dataDesaAktif.json",
       "columns": [{
           "data": "no",
@@ -328,8 +338,43 @@
           "targets": -1,
           "className": "text-center"
         }
-
       ]
+    });
+
+    $("#datepicker").on("apply.daterangepicker", function(ev, picker) {
+      minDateFilter = Date.parse(picker.startDate);
+      maxDateFilter = Date.parse(picker.endDate);
+
+      $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+        var date = Date.parse(data[1]);
+
+        if (
+          (isNaN(minDateFilter) && isNaN(maxDateFilter)) ||
+          (isNaN(minDateFilter) && date <= maxDateFilter) ||
+          (minDateFilter <= date && isNaN(maxDateFilter)) ||
+          (minDateFilter <= date && date <= maxDateFilter)
+        ) {
+          return true;
+        }
+        return false;
+      });
+      table.draw();
+    });
+
+    $("#filterProvinsi").on("change", function() {
+      table.columns(3).search(this.value).draw();
+    });
+    $("#filterKabupaten").on("change", function() {
+      table.columns(4).search(this.value).draw();
+    });
+    $("#filterKecamatan").on("change", function() {
+      table.columns(5).search(this.value).draw();
+    });
+    $("#filterDesa").on("change", function() {
+      table.columns(6).search(this.value).draw();
+    });
+    $("#filterBuku").on("change", function() {
+      table.columns(-1).search(this.value).draw();
     });
   });
   </script>
@@ -405,7 +450,8 @@
     function am4themes_myTheme(target) {
       if (target instanceof am4core.ColorSet) {
         target.list = [
-          am4core.color("#1BA68D")        ];
+          am4core.color("#1BA68D")
+        ];
       }
     }
 

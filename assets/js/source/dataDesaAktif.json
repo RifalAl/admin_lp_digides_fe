@@ -2,7 +2,7 @@
   "data": [
   {
     "no": "1",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi A",
     "kabkot": "kabupaten/kota A",
@@ -16,7 +16,7 @@
   },
   {
     "no": "2",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi B",
     "kabkot": "kabupaten/kota B",
@@ -29,7 +29,7 @@
     "jenisPersuratan" : "Jenis Surat B"
   },  {
     "no": "3",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi C",
     "kabkot": "kabupaten/kota C",
@@ -42,7 +42,7 @@
     "jenisPersuratan" : "Jenis Surat C"
   },  {
     "no": "4",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi E",
     "kabkot": "kabupaten/kota E",
@@ -55,7 +55,7 @@
     "jenisPersuratan" : "Jenis Surat E"
   },  {
     "no": "5",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi F yang paling panjang",
     "kabkot": "kabupaten/kota F",
@@ -68,7 +68,7 @@
     "jenisPersuratan" : "Jenis Surat F"
   },   {
     "no": "6",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 January 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi G",
     "kabkot": "kabupaten/kota G yang panjang namanya",
@@ -81,7 +81,7 @@
     "jenisPersuratan" : "Jenis Surat G"
   },  {
     "no": "7",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi H",
     "kabkot": "kabupaten/kota H",
@@ -94,7 +94,7 @@
     "jenisPersuratan" : "Jenis Surat H"
   },  {
     "no": "8",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi I",
     "kabkot": "kabupaten/kota I",
@@ -107,7 +107,7 @@
     "jenisPersuratan" : "Jenis Surat I"
   },{
     "no": "9",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi J",
     "kabkot": "kabupaten/kota J",
@@ -120,7 +120,7 @@
     "jenisPersuratan" : "Jenis Surat J"
   },  {
     "no": "10",
-    "tanggal": "20/11/2020",
+    "tanggal": "20 November 2020",
     "kodeDesa": "123-123-123",
     "provinsi": "Provinsi K",
     "kabkot": "kabupaten/kota K",
@@ -131,5 +131,18 @@
     "jumlahDataPenduduk": 54321,
     "jenisBuku": "Jenis Buku K",
     "jenisPersuratan" : "Jenis Surat K"
+  },{
+    "no": "11",
+    "tanggal": "20 November 2020",
+    "kodeDesa": "123-123-123",
+    "provinsi": "Provinsi L",
+    "kabkot": "kabupaten/kota L",
+    "kecamatan": "kecamatan L",
+    "desa": "desa/kelurahan L",
+    "jumlahStaff": 99,
+    "jumlahUserMobile": 1000,
+    "jumlahDataPenduduk": 54321,
+    "jenisBuku": "Jenis Buku L",
+    "jenisPersuratan" : "Jenis Surat L"
   }]
 }
